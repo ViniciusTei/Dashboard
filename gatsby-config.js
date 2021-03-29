@@ -29,6 +29,37 @@ module.exports = {
       },
     },
     `gatsby-plugin-gatsby-cloud`,
+    {
+      resolve: "gatsby-plugin-firebase",
+      options: {
+        credentials: {
+          apiKey: "AIzaSyAlu8Y-dFpRMFlkMgEzZNM3MOUTMfdBL-8",
+          authDomain: "dashboard-44678.firebaseapp.com",
+          projectId: "dashboard-44678",
+          storageBucket: "dashboard-44678.appspot.com",
+          messagingSenderId: "820059612511",
+          appId: "1:820059612511:web:aa0b1f6ce2e8c6876dc2ea"
+        },
+        features: {
+          database: true,
+          firestore: false,
+          storage: false,
+          messaging: false,
+          functions: true,
+        },
+      },
+      
+    },
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-google-fonts`,
+      options: {
+        fonts: [
+          `poppins`,
+        ],
+        display: 'swap'
+      }
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
