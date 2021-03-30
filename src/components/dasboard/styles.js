@@ -1,4 +1,3 @@
-import { symbol } from 'prop-types'
 import styled from 'styled-components'
 
 export const Container = styled.div`
@@ -6,7 +5,7 @@ export const Container = styled.div`
     height: 78vh;
     background: #FFFFFF;
     border-radius: 45px;
-    padding: 3rem;
+    padding: 2.4rem;
     color: #000 !important;
     display: flex;
     flex-direction: column;
@@ -25,7 +24,6 @@ export const Titulo = styled.h1`
 `
 
 export const Head = styled.header`
-
     margin: 0;
 `
 
@@ -51,14 +49,7 @@ export const ItemFinancas = styled.div`
     max-height: 354px;
 `
 
-export const CardGeral = styled.div`
-    width: 100%;
-    height: 244px;
 
-    background: #E5F2FE;
-    border-radius: 24px;
-    text-align: center;
-`
 export const MiniCardWrapper = styled.div`
     display: flex;
     width: 100%;
@@ -76,4 +67,31 @@ export const MiniCards = styled.div`
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
+
+    & ${'h4'} {
+        font-size: 1.265rem;
+        margin-top: 1rem;
+        margin-bottom: 0;
+    }
+`
+
+export const MiniCardContent = styled.div`
+    font-size: 1rem;
+    margin-bottom: 3rem;
+`
+
+export const IconWrrapper = styled.div`
+    width: 56px;
+    height: 56px;
+    background: #FFFFFF;
+    border-radius: 14px;
+    justify-self: flex-start;
+
+    padding: .5rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 1.5rem;
 `

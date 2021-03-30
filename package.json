@@ -22,8 +22,10 @@
     "prop-types": "^15.7.2",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-google-charts": "^3.0.15",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.2.1"
+    "styled-components": "^5.2.1",
+    "styled-icons": "^10.31.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"
