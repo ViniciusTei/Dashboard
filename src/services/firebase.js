@@ -2,8 +2,11 @@ import firebase from "gatsby-plugin-firebase"
 
 
 const db = firebase.firestore()
+let saldo = []
+let despesas = []
+let credito = []
 
-export const DataBase = {
+export const DataService = {
     fetchSaldo: async () => {
         let itens = []
         await db.collection("saldo").get().then((querySnapshot) => {
@@ -15,7 +18,7 @@ export const DataBase = {
               }) 
             })
         });
-
+        saldo = itens
         return itens;
     },
 
@@ -30,7 +33,7 @@ export const DataBase = {
               }) 
             })
         });
-        
+        despesas = itens
         return itens;
     },
 
@@ -45,7 +48,11 @@ export const DataBase = {
               }) 
             })
         });
-        
+        credito = itens
         return itens;
-    }
+    },
+
+    getSaldo: () => saldo,
+    getDespesas: () => despesas,
+    getCredito: () => credito,
 }

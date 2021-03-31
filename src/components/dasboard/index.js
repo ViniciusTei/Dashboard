@@ -11,7 +11,7 @@ import {
     IconWrrapper,
     MiniCardContent
 } from './styles'
-import {DataBase} from '../../services/firebase';
+import {DataService} from '../../services/firebase';
 
 //components
 import CardGeral from '../card-geral'
@@ -119,9 +119,9 @@ export default function Dashboard() {
 
     //PEGA AS LISTAS: SALDO CREDITO E DESPESASA
     React.useEffect(async () => {
-      await DataBase.fetchDespesas().then(res => setDespesaList(res))
-      await DataBase.fetchSaldo().then(res => setSaldoList(res))
-      await DataBase.fetchCredito().then(res => setCreditoList(res))
+      await DataService.fetchDespesas().then(res => setDespesaList(res))
+      await DataService.fetchSaldo().then(res => setSaldoList(res))
+      await DataService.fetchCredito().then(res => setCreditoList(res))
 
     }, [])
     
