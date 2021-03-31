@@ -11,10 +11,11 @@ import {
     IconWrrapper,
     MiniCardContent
 } from './styles'
-import firebase from "gatsby-plugin-firebase"
+import {DataBase} from '../../services/firebase';
 
 //components
 import CardGeral from '../card-geral'
+import ListaTop5 from '../lista-top5'
 
 //icons
 import {CreditCard} from '@styled-icons/bootstrap/CreditCard'
@@ -31,6 +32,7 @@ export default function Dashboard() {
     const [saldoList, setSaldoList] = React.useState([])
     const [despesaList, setDespesaList] = React.useState([])
     const [creditoList, setCreditoList] = React.useState([])
+    const [listaTop5, setListaTop5] = React.useState([])
 
     //lista que constem os dados do grafico geral
     const [list, setList] = React.useState([
@@ -105,50 +107,21 @@ export default function Dashboard() {
         setCredito(credit)
     }
 
+    //pega as ultimas 5 despesas
+    function getTop5() {
+        let aux = []
+        saldoList.forEach(el => aux.push({tipo: 'saldo', ...el}))
+        despesaList.forEach(el => aux.push({tipo: 'despesa', ...el}))
+        creditoList.forEach(el => aux.push({tipo: 'credito', ...el}))
+
+        setListaTop5(aux)
+    }
+
     //PEGA AS LISTAS: SALDO CREDITO E DESPESASA
     React.useEffect(async () => {
-      const db = firebase.firestore()
-      await db.collection("despesas").get().then((querySnapshot) => {
-        let itens = []
-        querySnapshot.forEach((doc) => {
-            // console.log(`${doc.id} => ${doc.data()}`);
-           itens.push({
-            id: doc.id,
-            ...doc.data()
-          }) 
-        });
-
-        //console.log(itens)
-        setDespesaList(itens)
-      });
-
-      await db.collection("saldo").get().then((querySnapshot) => {
-        let itens = []
-        querySnapshot.forEach((doc) => {
-            // console.log(`${doc.id} => ${doc.data()}`);
-           itens.push({
-            id: doc.id,
-            ...doc.data()
-          }) 
-        });
-
-        //console.log(itens)
-        setSaldoList(itens)
-      });
-
-      await db.collection("credito").get().then((querySnapshot) => {
-        let itens = []
-        querySnapshot.forEach((doc) => {
-            // console.log(`${doc.id} => ${doc.data()}`);
-           itens.push({
-            id: doc.id,
-            ...doc.data()
-          }) 
-        });
-
-        //console.log(itens)
-        setCreditoList(itens)
-      });
+      await DataBase.fetchDespesas().then(res => setDespesaList(res))
+      await DataBase.fetchSaldo().then(res => setSaldoList(res))
+      await DataBase.fetchCredito().then(res => setCreditoList(res))
 
     }, [])
     
@@ -160,6 +133,7 @@ export default function Dashboard() {
             calculaDespesa()
             calculaSaldo()
             createListData()
+            getTop5()
         }
     }, [saldoList, despesaList, creditoList])
     
@@ -204,6 +178,9 @@ export default function Dashboard() {
                     </MiniCardWrapper>
                     
                 </ItemFinancas>
+            </CardRow>
+            <CardRow>
+                {listaTop5 && <ListaTop5 top5={listaTop5}></ListaTop5>}
             </CardRow>
         </Container>
     )

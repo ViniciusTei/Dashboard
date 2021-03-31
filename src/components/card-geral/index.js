@@ -1,6 +1,6 @@
 import React from 'react'
 import { Chart } from "react-google-charts";
-import { Cardgeral,Row, Titulo } from './styles'
+import { Cardgeral, Titulo } from './styles'
 
 
 export default function CardGeral({valor, data}) {
