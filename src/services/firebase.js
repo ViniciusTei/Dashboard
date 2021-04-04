@@ -55,4 +55,7 @@ export const DataService = {
     getSaldo: () => saldo,
     getDespesas: () => despesas,
     getCredito: () => credito,
+    getTop5: () => {
+        console.log('top 5 mais recentes')
+    }
 }

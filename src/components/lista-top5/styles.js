@@ -30,11 +30,48 @@ export const Container = styled.div`
 `
 
 export const Header = styled.div`
+    position: fixed;
+    background: transparent;
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+`
+
+export const Title = styled.div`
     font-size: 2rem;
     font-weight: bold;
-    position: fixed;
-    background: #fff;
-    width: 600px;
+`
+export const Dropdown = styled.div`
+    
+    input {
+        border: 1px solid #333;
+        border-radius: 25px;
+        cursor: pointer; 
+        position: relative;
+        display: inline-block;
+        height: 75px; 
+    }
+
+    input:hover {
+        ${DropdownContent} {
+            display: block;
+        }
+    }
+    
+`
+
+export const DropdownContent = styled.div`
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 99999;
+
+    div:hover {
+        background-color: #f1f1f1;
+    }
 `
 
 export const List = styled.div`
