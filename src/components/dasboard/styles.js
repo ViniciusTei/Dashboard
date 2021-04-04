@@ -9,6 +9,7 @@ export const Container = styled.div`
     color: #000 !important;
     display: flex;
     flex-direction: column;
+    overflow-x: auto;
 `
 
 export const Titulo = styled.h1`
@@ -24,12 +25,16 @@ export const Titulo = styled.h1`
 `
 
 export const Head = styled.header`
-    margin: 0;
+    margin:  0;
+    position: fixed;
 `
 
 export const CardRow = styled.section`
     min-height: 300px;
     display: flex;
+    min-width: 1000px;
+    overflow-x: auto;
+    margin-top: 1rem;
 `
 
 export const ItemGeral = styled.div`
@@ -51,9 +56,10 @@ export const ItemFinancas = styled.div`
 
 
 export const MiniCardWrapper = styled.div`
-    display: flex;
+    display: inline-flex;
     width: 100%;
     padding: 0;
+    overflow-x: auto;
 `
 export const MiniCards = styled.div`
     width: 33%;
